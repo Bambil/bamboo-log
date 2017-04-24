@@ -1,0 +1,13 @@
+{
+  "name": "I1820.Core.js",
+  "version": "1.0.0",
+  "description": "Core implementation of I1820 in JavaScript.",
+  "main": "index.js",
+  "repository": "https://gitlab.com/I1820/Core.js",
+  "author": "Parham Alvani <parham.alvani@gmail.com>",
+  "license": "GPLv3",
+  "dependencies": {
+    "mqtt": "^2.6.2",
+    "seneca": "^3.3.0"
+  }
+}
