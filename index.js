@@ -12,7 +12,7 @@ app.use('discovery');
 /**
  * Creates MQTT connection
  */
-var client  = mqtt.connect(`mqtt://$(config.get('mqtt.ip'))`);
+var client  = mqtt.connect(`mqtt://${config.get('mqtt.ip')}`);
 
 client.on('connect', function () {
   client.subscribe(`I1820/${config.get('cluster.name')}/discovery/ping`);
