@@ -1,7 +1,5 @@
 'use strict';
 
-var Agent = require('../models/agent');
-
 module.exports = function discovery(options) {
   /**
    * Fetch the list of all the agents.
@@ -14,8 +12,17 @@ module.exports = function discovery(options) {
    * Ping from agnet.
    */
   this.add({role: 'discovery', action: 'ping'}, function (msg, respond) {
-    var newAgent = new Agent(msg.data.id);
-    console.log(newAgent);
-    var agents = this.make("agents");
+    var agents = this.make("agent");
+    agents.load$(msg.data.id, function (err, agent) {
+      if (agent === null) {
+        agents.id = msg.data.id;
+        agents.things = msg.data.things;
+        agents.timestamp = Date.now();
+        agents.save$(respond);
+      } else {
+        agent.timestamp = Date.now();
+        agent.save$(respond);
+      }
+    });
   });
 };
