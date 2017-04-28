@@ -26,8 +26,9 @@ mqttClient.on('message', function (topic, message) {
   app.act({role: splitedTopic[2], action: splitedTopic[3], data: JSON.parse(message)},
           function (err, data) {
             if (err) {
-              return;
+              console.log(err);
+            } else {
+              console.log(data);
             }
-          }
-         );
+          });
 });
