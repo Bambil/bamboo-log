@@ -10,6 +10,7 @@ const entities = require('seneca-entity');
  */
 app.use(entities);
 app.use('discovery');
+app.use('log');
 
 /**
  * Creates MQTT connection
@@ -18,7 +19,7 @@ const mqttClient  = mqtt.connect(`mqtt://${config.get('mqtt.ip')}`);
 
 mqttClient.on('connect', function () {
   mqttClient.subscribe(`I1820/${config.get('cluster.name')}/discovery/ping`);
-  // client.subscribe('I1820/' + config.get('cluster.name') + '/log');
+  mqttClient.subscribe(`I1820/${config.get('cluster.name')}/log/send`);
 });
 
 mqttClient.on('message', function (topic, message) {
