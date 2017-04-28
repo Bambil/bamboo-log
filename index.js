@@ -3,10 +3,12 @@
 const app = require('seneca')();
 const mqtt = require('mqtt');
 const config = require('config');
+const entities = require('seneca-entity');
 
 /**
- * Initiates discovery module
+ * Initiates seneca modules
  */
+app.use(entities);
 app.use('discovery');
 
 /**
