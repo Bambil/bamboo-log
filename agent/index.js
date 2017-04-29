@@ -37,7 +37,9 @@ module.exports = function agent(options) {
 
         winston.info(agents.data$(false));
 
-        agents.save$(respond);
+        agents.save$(function (err, agent) {
+          respond(err, agent.data$(false));
+        });
       } else if (list.length === 1) {
 
         let agent = list[0];
@@ -45,7 +47,9 @@ module.exports = function agent(options) {
 
         winston.info(agent.data$(false));
 
-        agent.save$(respond);
+        agents.save$(function (err, agent) {
+          respond(err, agent.data$(false));
+        });
       } else {
         respond(new Error(`Duplicate agent: ${msg.data.id}`), null);
       }
