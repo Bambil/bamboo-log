@@ -8,6 +8,7 @@ module.exports = function agent(options) {
    */
   this.add({role: 'agent', action: 'fetch'}, function (args, respond) {
     let agents = this.make('I1820', 'agent');
+    winston.info('I1820.agent fetch:');
     agents.list$({}, respond);
   });
 
@@ -16,6 +17,7 @@ module.exports = function agent(options) {
    */
   this.add({role: 'agent', action: 'fetch', criteria: "byUUID"}, function (args, respond) {
     let agents = this.make('I1820', 'agent');
+    winston.info('I1820.agent fetch byUUID:');
     agents.list$({uuid: args.uuid}, respond);
   });
 
@@ -24,6 +26,7 @@ module.exports = function agent(options) {
    */
   this.add({role: 'agent', action: 'ping'}, function (msg, respond) {
     let agents = this.make('I1820', 'agent');
+    winston.info('I1820.agent ping:');
 
     agents.list$({uuid: msg.data.id}, function (err, list) {
       if (list.length === 0) {
