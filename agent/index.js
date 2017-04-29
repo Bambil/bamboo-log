@@ -6,9 +6,17 @@ module.exports = function agent(options) {
   /**
    * Fetch the list of all the agents.
    */
-  this.add({role: 'agent', action: 'fetch'}, function (msg, respond) {
+  this.add({role: 'agent', action: 'fetch'}, function (args, respond) {
     let agents = this.make('I1820', 'agent');
     agents.list$({}, respond);
+  });
+
+  /**
+   * Fetch an agent by id.
+   */
+  this.add({role: 'agent', action: 'fetch', criteria: "byUUID"}, function (args, respond) {
+    let agents = this.make('I1820', 'agent');
+    agents.list$({uuid: args.uuid}, respond);
   });
 
   /**
