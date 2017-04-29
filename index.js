@@ -6,6 +6,11 @@ const config = require('config');
 const entities = require('seneca-entity');
 
 /**
+ * I1820 Initiation
+ */
+console.log(' * 18.20 at Sep 07 2016 7:20 IR721');
+
+/**
  * Initiates seneca modules
  */
 app.use(entities);
@@ -18,8 +23,12 @@ app.use('log');
 const mqttClient  = mqtt.connect(`mqtt://${config.get('mqtt.ip')}`);
 
 mqttClient.on('connect', function () {
+  console.log(`* MQTT at ${config.get('mqtt.ip')}`);
   mqttClient.subscribe(`I1820/${config.get('cluster.name')}/discovery/ping`);
   mqttClient.subscribe(`I1820/${config.get('cluster.name')}/log/send`);
+});
+
+mqttClient.on('error', function () {
 });
 
 mqttClient.on('message', function (topic, message) {
