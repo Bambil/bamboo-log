@@ -13,7 +13,5 @@ COPY . /usr/src/app/
 WORKDIR /usr/src/app
 
 # Creates configurations based on environment variables
-RUN ./config.sh
-
-# Command to execute
-CMD ["yarn", "serve"]
+# and Command to execute.
+CMD ./config.sh && yarn serve
