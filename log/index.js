@@ -4,6 +4,8 @@ const config = require('config');
 const Influx = require('influx');
 
 const influx = new Influx.InfluxDB({
+  host: config.get('influx.host'),
+  database: config.get('influx.database')
 });
 
 module.exports = function log(options) {
