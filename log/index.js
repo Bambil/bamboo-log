@@ -8,6 +8,8 @@ const influx = new Influx.InfluxDB({
   database: config.get('influx.database')
 });
 
+console.log(` * influx at ${config.get('influx.host')}`);
+
 module.exports = function log(options) {
   this.add({role: 'log', action: 'send'}, function (msg, respond) {
     let points = [];
