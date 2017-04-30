@@ -8,7 +8,7 @@ read -r -d '' config << EOF
   },
   "influx": {
     "host": "$INFLUX_HOST",
-    "database": "$INFLUX_DB"
+    "database": "$INFLUX_DATABASE"
   },
   "cluster": {
     "name": "$CLUSTER_NAME"
