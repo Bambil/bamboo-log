@@ -1,0 +1,12 @@
+version: "2"
+services:
+  i1820:
+    build: .
+    image: i1820/core.js
+    environment:
+      MQTT_IP: 192.168.73.6
+      CLUSTER_NAME: parham-home
+      INFLUX_DATABASE: I1820
+      INFLUX_HOST: influx # must match influx service below
+  influx:
+    image: tutum/influxdb
