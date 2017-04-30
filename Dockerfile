@@ -12,5 +12,8 @@ COPY . /usr/src/app/
 # Let's go to /usr/src/app
 WORKDIR /usr/src/app
 
+# Creates configurations based on environment variables
+RUN ./config.sh
+
 # Command to execute
 CMD ["yarn", "serve"]
