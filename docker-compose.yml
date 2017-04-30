@@ -9,4 +9,4 @@ services:
       INFLUX_DATABASE: I1820
       INFLUX_HOST: influx # must match influx service below
   influx:
-    image: tutum/influxdb
+    image: influxdb
