@@ -29,7 +29,7 @@ app.use('log');
 const mqttClient  = mqtt.connect(`mqtt://${config.get('mqtt.ip')}`);
 
 mqttClient.on('connect', function () {
-  console.log(`* MQTT at ${config.get('mqtt.ip')}`);
+  console.log(` * MQTT at ${config.get('mqtt.ip')}`);
   mqttClient.subscribe(`I1820/${config.get('cluster.name')}/agent/ping`);
   mqttClient.subscribe(`I1820/${config.get('cluster.name')}/agent/fatch`);
   mqttClient.subscribe(`I1820/${config.get('cluster.name')}/log/send`);
