@@ -8,6 +8,10 @@ const influx = new Influx.InfluxDB({
   database: config.get('influx.database')
 });
 
+influx.createDatabase(config.get('influx.database')).then(() => {
+  console.log(' * influx db created.');
+});
+
 console.log(` * influx at ${config.get('influx.host')}`);
 
 module.exports = function log(options) {
