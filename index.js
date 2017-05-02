@@ -1,9 +1,14 @@
 'use strict';
-
+/* Seneca application */
 const app = require('seneca')();
-const mqtt = require('mqtt');
-const config = require('config');
 const entities = require('seneca-entity');
+const webapp = require('seneca-web');
+const webapp_config = require('./http');
+
+const mqtt = require('mqtt');
+
+const config = require('config');
+
 const winston = require('winston');
 
 /**
@@ -22,6 +27,17 @@ console.log(' * 18.20 at Sep 07 2016 7:20 IR721');
 app.use(entities);
 app.use('agent');
 app.use('log');
+app.use(webapp, webapp_config);
+
+/**
+ * Seneca is ready
+ */
+app.ready(() => {
+  let server = app.export('web/context')();
+  server.start(() => {
+    console.log(` * HTTP at ${server.info.uri}`);
+  });
+});
 
 /**
  * Creates MQTT connection
