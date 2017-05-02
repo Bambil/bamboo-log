@@ -18,6 +18,8 @@
     "pm2": "^2.4.5",
     "seneca": "^3.3.0",
     "seneca-entity": "^2.0.0",
+    "seneca-web": "^2.0.0",
+    "seneca-web-adapter-hapi": "^1.0.2",
     "winston": "^2.3.1"
   }
 }

@@ -433,7 +433,7 @@ end-of-stream@^1.1.0:
   dependencies:
     once "^1.4.0"
 
-eraro@0.4, eraro@0.4.1, eraro@~0.4.1:
+eraro@0.4, eraro@0.4.1, eraro@^0.4.1, eraro@~0.4.1:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/eraro/-/eraro-0.4.1.tgz#6538730769a1e89ffc3f0c7e2c94d5a1f866629d"
   dependencies:
@@ -976,7 +976,7 @@ lodash@3.10.0:
   version "3.10.0"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-3.10.0.tgz#93d51c672828a4416a12af57220ba8a8737e2fbb"
 
-lodash@4.15, lodash@4.15.0:
+lodash@4.15, lodash@4.15.0, lodash@^4.15.0:
   version "4.15.0"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.15.0.tgz#3162391d8f0140aa22cf8f6b3c34d6b7f63d3aa9"
 
@@ -1565,6 +1565,19 @@ seneca-transport@2.1.0:
     qs "6.2.1"
     reconnect-core "1.3.0"
     wreck "9.0.0"
+
+seneca-web-adapter-hapi@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/seneca-web-adapter-hapi/-/seneca-web-adapter-hapi-1.0.2.tgz#96b7aba8a84154b0d3bfaad9b7953f652385ea96"
+  dependencies:
+    lodash "^4.15.0"
+
+seneca-web@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/seneca-web/-/seneca-web-2.0.0.tgz#817eea019a791bd6a1a46902148d21a36abe370f"
+  dependencies:
+    eraro "^0.4.1"
+    lodash "^4.15.0"
 
 seneca@^3.3.0:
   version "3.3.0"
