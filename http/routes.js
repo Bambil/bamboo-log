@@ -1,6 +1,6 @@
 const routes = [{
-  pin: 'role:agent,cmd:*',
-  prefix: '/discovery/api/v1',
+  pin: {role: 'agent', action: '*'},
+  prefix: '/agent/api/v1',
   map: {
     fetch: {
       GET: true
