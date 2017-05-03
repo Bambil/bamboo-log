@@ -1,6 +1,6 @@
 'use strict';
 
-const routes = require('./routes.js');
+const routes = require('./routes');
 const hapi = require('hapi');
 
 module.exports = {
