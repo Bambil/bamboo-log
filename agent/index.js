@@ -2,6 +2,7 @@
 
 const winston = require('winston');
 
+/* Substack Pattern */
 module.exports = function agent(options) {
   /**
    * Fetch the list of all the agents.
