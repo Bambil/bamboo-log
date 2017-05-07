@@ -331,6 +331,12 @@ console-control-strings@^1.0.0, console-control-strings@~1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/console-control-strings/-/console-control-strings-1.1.0.tgz#3d7cf4464db6446ea644bf4b39507f9851008e8e"
 
+consul@^0.28.0:
+  version "0.28.0"
+  resolved "https://registry.yarnpkg.com/consul/-/consul-0.28.0.tgz#c478fe6c58b6154b72867ef57ca8cfac181fba92"
+  dependencies:
+    papi "^0.27.0"
+
 content@3.x.x:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/content/-/content-3.0.3.tgz#000f8a01371b95c66afe99be9390fa6cb91aa87a"
@@ -1224,6 +1230,10 @@ osenv@^0.1.4:
   dependencies:
     os-homedir "^1.0.0"
     os-tmpdir "^1.0.0"
+
+papi@^0.27.0:
+  version "0.27.0"
+  resolved "https://registry.yarnpkg.com/papi/-/papi-0.27.0.tgz#7392a38ebefa7fb67e98b363bca3d136827caf28"
 
 parse-glob@^3.0.4:
   version "3.0.4"
