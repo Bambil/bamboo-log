@@ -5,10 +5,18 @@ const entities = require('seneca-entity');
 const webapp = require('seneca-web');
 const webapp_config = require('./http');
 
-/* consul client */
+/* consul client and service registration */
 const config = require('config');
 const consul = require('consul')({
   host: config.get('cluster.consul.host')
+});
+consul.agent.service.register({
+  name: 'I1820.core.js',
+  id: 'el1'
+}, (err) => {
+  if (err) {
+    console.log(err);
+  }
 });
 
 const winston = require('winston');
