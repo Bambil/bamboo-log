@@ -7,6 +7,9 @@
     "database": "i1820"
   },
   "cluster": {
-    "name": "parham-home"
+    "name": "parham-home",
+    "consul": {
+      "host": "127.0.0.1"
+    }
   }
 }
