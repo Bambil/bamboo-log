@@ -12,7 +12,7 @@ read -r -d '' config << EOF
   },
   "cluster": {
     "name": "$CLUSTER_NAME",
-    "cosul": {
+    "consul": {
       "host": "$CLUSTER_CONSUL_HOST"
     }
   }
