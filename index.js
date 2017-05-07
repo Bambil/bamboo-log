@@ -5,6 +5,12 @@ const entities = require('seneca-entity');
 const webapp = require('seneca-web');
 const webapp_config = require('./http');
 
+/* consul client */
+const config = require('config');
+const consul = require('consul')({
+  host: config.get('cluster.consul.host')
+});
+
 const winston = require('winston');
 
 /**
