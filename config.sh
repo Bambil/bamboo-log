@@ -11,7 +11,10 @@ read -r -d '' config << EOF
     "database": "$INFLUX_DATABASE"
   },
   "cluster": {
-    "name": "$CLUSTER_NAME"
+    "name": "$CLUSTER_NAME",
+    "cosul": {
+      "host": "$CLUSTER_CONSUL_HOST"
+    }
   }
 }
 EOF
