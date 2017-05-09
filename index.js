@@ -44,7 +44,7 @@ app.use(webapp, webapp_config);
  * Seneca is ready
  */
 app.ready(() => {
-  let server = app.export('web/context')();
+  const server = app.export('web/context')();
   server.start(() => {
     console.log(` * HTTP at ${server.info.uri}`);
   });
