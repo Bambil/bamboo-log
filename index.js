@@ -1,4 +1,13 @@
 'use strict';
+
+const winston = require('winston');
+
+/**
+ * Configure CLI output on the default logger
+ */
+winston.cli();
+
+
 /* Seneca application */
 const app = require('seneca')();
 const entities = require('seneca-entity');
@@ -15,21 +24,15 @@ consul.agent.service.register({
   id: 'el1'
 }, (err) => {
   if (err) {
-    console.log(err);
+    winston.error(err);
   }
 });
 
-const winston = require('winston');
-
-/**
- * Configure CLI output on the default logger
- */
-winston.cli();
 
 /**
  * I1820 Initiation
  */
-console.log(' * 18.20 at Sep 07 2016 7:20 IR721');
+winston.info(' * 18.20 at Sep 07 2016 7:20 IR721');
 
 /**
  * Initiates seneca modules
@@ -46,6 +49,6 @@ app.use(webapp, webapp_config);
 app.ready(() => {
   const server = app.export('web/context')();
   server.start(() => {
-    console.log(` * HTTP at ${server.info.uri}`);
+    winston.info(` * HTTP at ${server.info.uri}`);
   });
 });
