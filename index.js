@@ -12,7 +12,7 @@ winston.cli();
 const app = require('seneca')();
 const entities = require('seneca-entity');
 const webapp = require('seneca-web');
-const webapp_config = require('./http');
+const webappConfig = require('./http');
 
 /* consul client and service registration */
 const config = require('config');
@@ -41,7 +41,7 @@ app.use(entities);
 app.use('agent');
 app.use('log');
 app.use('connectivity');
-app.use(webapp, webapp_config);
+app.use(webapp, webappConfig);
 
 /**
  * Seneca is ready
