@@ -2,6 +2,7 @@
 
 const config = require('config');
 const Influx = require('influx');
+const winston = require('winston');
 
 const influx = new Influx.InfluxDB({
   host: config.get('influx.host'),
@@ -9,18 +10,18 @@ const influx = new Influx.InfluxDB({
 });
 
 influx.createDatabase(config.get('influx.database')).then(() => {
-  console.log(' * influx db created.');
+  winston.log(' * influx db created.');
 });
 
-console.log(` * influx at ${config.get('influx.host')}`);
+winston.log(` * influx at ${config.get('influx.host')}`);
 
-module.exports = function log(options) {
-  this.add({role: 'log', action: 'send'}, function (msg, respond) {
-    let points = [];
-    msg.data.states.forEach(function (state) {
+module.exports = function log() {
+  this.add({role: 'log', action: 'send'}, (msg, respond) => {
+    const points = [];
+    msg.data.states.forEach((state) => {
       points.push({
         measurement: state.name,
-        tags: {agent_id: msg.data.agent, device_id: msg.data.device},
+        tags: {agentId: msg.data.agent, deviceId: msg.data.device},
         fields: {value: state.value}
       });
     });
