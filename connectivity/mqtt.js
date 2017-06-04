@@ -13,16 +13,35 @@ const mqtt = require('mqtt');
 const winston = require('winston');
 
 class I1820MqttConnectivity extends I1820Connectivity {
-  constructor(host, port, cluster) {
+  constructor(options) {
     super();
-    this.mqttClient  = mqtt.connect(`mqtt://${host}:${port}`);
+    this.mqttClient  = mqtt.connect(`mqtt://${options.host}:${options.port}`);
 
     this.mqttClient.on('connect',() => {
-      winston.info(` * MQTT at ${host}:${port}`);
-      this.mqttClient.subscribe(`I1820/${cluster}/agent/ping`);
-      this.mqttClient.subscribe(`I1820/${cluster}/agent/fatch`);
-      this.mqttClient.subscribe(`I1820/${cluster}/log/send`);
+      winston.info(` * MQTT at ${options.host}:${options.port}`);
+      this.mqttClient.subscribe(`I1820/${options.cluster}/agent/ping`);
+      this.mqttClient.subscribe(`I1820/${options.cluster}/log/send`);
     });
+
+    this.mqttClient.on('error', (err) => {
+      winston.error(err);
+    });
+
+    this.mqttClient.on('message', (topic, message) => {
+      const splitedTopic = topic.split('/');
+
+      if (splitedTopic[2] === 'log') {
+        if (splitedTopic[3] === 'send') {
+          this.onLog(JSON.parse(message));
+        }
+      } else if (splitedTopic[2] === 'agent') {
+        if (splitedTopic[3] === 'ping') {
+          this.onPing(JSON.parse(message));
+        }
+      }
+
+    });
+
   }
 }
 
