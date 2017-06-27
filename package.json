@@ -1,9 +1,9 @@
 {
-  "name": "I1820.Core.js",
-  "version": "1.0.0",
-  "description": "Core implementation of I1820 in JavaScript.",
+  "name": "I1820.Log",
+  "version": "2.0.0",
+  "description": "d2I1820 Log Component",
   "main": "index.js",
-  "repository": "https://gitlab.com/I1820/Core.js",
+  "repository": "https://gitlab.com/I1820/Log",
   "author": "Parham Alvani <parham.alvani@gmail.com>",
   "license": "GPL-3.0",
   "scripts": {
