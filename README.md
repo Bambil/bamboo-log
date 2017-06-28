@@ -5,9 +5,11 @@ Docker based Distributed I1820 (d2I1820) is a new version of our platform that t
 d2I1820 uses microservice architecture and written in Node.js.
 
 ## Log
-Log component provide following services:
+**Log** is every data that comes from the sensors, Log component provides following services:
 
-1. Log Collecting (We call every data that comes from sensors log)
+1. Log Collection
+2. Log Mediation
+3. Log Storing
 
 ## Standards
 * CBOR: RFC 7049 Concise Binary Object Representation
