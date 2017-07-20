@@ -1,54 +1,16 @@
-'use strict';
-
-const winston = require('winston');
-
-/**
- * Configure CLI output on the default logger
+/*
+ * +===============================================
+ * | Author:        Parham Alvani (parham.alvani@gmail.com)
+ * |
+ * | Creation Date: 20-07-2017
+ * |
+ * | File Name:     index.js
+ * +===============================================
  */
-winston.cli();
 
+/* winston.js */
+const winston = require('winston')
 
-/* Seneca application */
-const app = require('seneca')();
-const entities = require('seneca-entity');
-const webapp = require('seneca-web');
-const webappConfig = require('./http');
-
-/* consul client and service registration */
-const config = require('config');
-const consul = require('consul')({
-  host: config.get('cluster.consul.host')
-});
-consul.agent.service.register({
-  name: 'I1820.core.js',
-  id: 'el1'
-}, (err) => {
-  if (err) {
-    winston.error(err);
-  }
-});
-
-
-/**
- * I1820 Initiation
- */
-winston.info(' * 18.20 at Sep 07 2016 7:20 IR721');
-
-/**
- * Initiates seneca modules
- */
-app.use(entities);
-app.use('agent');
-app.use('log');
-app.use('connectivity');
-app.use(webapp, webappConfig);
-
-/**
- * Seneca is ready
- */
-app.ready(() => {
-  const server = app.export('web/context')();
-  server.start(() => {
-    winston.info(` * HTTP at ${server.info.uri}`);
-  });
-});
+/* Configure CLI output on the default logger */
+winston.cli()
+winston.info(' * 18.20 at Sep 07 2016 7:20 IR721')
