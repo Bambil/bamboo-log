@@ -21,8 +21,9 @@ class I1820Component extends EventEmitter {
     })
 
     this.mqttClient.on('connect', () => {
-      winston.info(` * MQTT at ${options.host}:${options.port}`)
-      this.mqttClient.subscribe(`I1820/${options.name}`)
+      options.subscribes.forEach((s) => {
+        this.mqttClient.subscribe(`I1820/${s}`)
+      })
       this.emit('ready')
     })
 
