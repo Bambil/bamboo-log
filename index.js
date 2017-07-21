@@ -9,7 +9,7 @@
  */
 /* Configuration */
 if (!process.env.I1820_CONNECTIVITY_HOST) {
-  process.env.I1820__HOST = '127.0.0.1'
+  process.env.I1820_CONNECTIVITY_HOST = '127.0.0.1'
 }
 
 if (!process.env.I1820_CONNECTIVITY_PORT) {
@@ -32,4 +32,6 @@ new I1820Component({
   subscribes: ['log']
 }).on('ready', () => {
   winston.info(` * MQTT at ${process.env.I1820_CONNECTIVITY_HOST}:${process.env.I1820_CONNECTIVITY_PORT}`)
+}).on('log', (message) => {
+  winston.data(message)
 })
