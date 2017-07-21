@@ -17,7 +17,7 @@ class I1820Component extends EventEmitter {
     super()
 
     this.mqttClient = mqtt.connect(`mqtt://${options.host}:${options.port}`, {
-      clientId: `I1820/${options.name}/${crypto.randomBytes(34).toString('hex')}`
+      clientId: `I1820/${options.name}/component/${crypto.randomBytes(34).toString('hex')}`
     })
 
     this.mqttClient.on('connect', () => {
@@ -32,6 +32,11 @@ class I1820Component extends EventEmitter {
     })
 
     this.mqttClient.on('message', (topic, message) => {
+      let result = topic.match(/^I1820\/(\w+)\//i)
+      if (result && result.length === 2) {
+        let action = result[1]
+        this.emit(action, JSON.parse(message.payload))
+      }
     })
   }
 }
