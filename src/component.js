@@ -32,7 +32,7 @@ class I1820Component extends EventEmitter {
     })
 
     this.mqttClient.on('message', (topic, message) => {
-      let result = topic.match(/^I1820\/(\w+)\//i)
+      let result = topic.match(/^I1820\/(\w+)/i)
       if (result && result.length === 2) {
         let action = result[1]
         this.emit(action, JSON.parse(message.payload))
