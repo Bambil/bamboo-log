@@ -24,13 +24,13 @@ class I1820Log {
 
   log (agentId, thingId, states) {
     const points = []
-    states.forEach((state) => {
+    for (let name in states) {
       points.push({
-        measurement: state.name,
+        measurement: name,
         tags: {agentId: agentId, deviceId: thingId},
-        fields: {value: state.value}
+        fields: {value: states[name]}
       })
-    })
+    }
     this.influx.writePoints(points).then(() => {
     })
   }
