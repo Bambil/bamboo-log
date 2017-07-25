@@ -1,5 +1,5 @@
 {
-  "name": "i1820/log",
+  "name": "@i1820/log",
   "version": "3.0.0",
   "description": "d2I1820 Log Component",
   "main": "index.js",
@@ -11,17 +11,9 @@
     "serve-pm2": "node ./node_modules/pm2/bin/pm2 start index.js"
   },
   "dependencies": {
-    "config": "^1.25.1",
-    "consul": "^0.28.0",
     "hapi": "^16.1.1",
     "influx": "^5.0.7",
-    "mqtt": "^2.6.2",
-    "pm2": "^2.4.5",
-    "seneca": "^3.3.0",
-    "seneca-entity": "^2.0.0",
-    "seneca-web": "^2.0.0",
-    "seneca-web-adapter-hapi": "^1.0.2",
-    "winston": "^2.3.1"
+    "mqtt": "^2.6.2"
   },
   "devDependencies": {
     "eslint": "^3.19.0",
