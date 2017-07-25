@@ -16,6 +16,14 @@ if (!process.env.I1820_CONNECTIVITY_PORT) {
   process.env.I1820_CONNECTIVITY_PORT = 1883
 }
 
+if (!process.env.I1820_HTTP_HOST) {
+  process.env.I1820_HTTP_HOST = '0.0.0.0'
+}
+
+if (!process.env.I1820_HTTP_PORT) {
+  process.env.I1820_HTTP_PORT = 8080
+}
+
 if (!process.env.I1820_DATABASE_NAME) {
   process.env.I1820_DATABASE_NAME = 'I1820'
 }
@@ -41,8 +49,8 @@ const i1820Log = new I1820Log({
 })
 
 new I1820Component({
-  host: process.env.I1820_CONNECTIVITY_HOST,
-  port: process.env.I1820_CONNECTIVITY_PORT,
+  mqttHost: process.env.I1820_CONNECTIVITY_HOST,
+  mqttPort: process.env.I1820_CONNECTIVITY_PORT,
   name: 'log',
   subscribes: ['log']
 }).on('ready', () => {
