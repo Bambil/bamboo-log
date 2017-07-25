@@ -59,7 +59,7 @@ new I1820Component({
   winston.info(` * MQTT at ${process.env.I1820_CONNECTIVITY_HOST}:${process.env.I1820_CONNECTIVITY_PORT}`)
 }).on('log', (message) => {
   winston.data(message)
-  i1820Log.log(message.hash, message.id, message.type, message.timestamp, message.state)
+  i1820Log.log(message.name, message.data.id, message.data.timestamp, message.data.state)
 })
 
 /* HTTP server initiation */
