@@ -11,16 +11,16 @@
     "serve-pm2": "node ./node_modules/pm2/bin/pm2 start index.js"
   },
   "dependencies": {
-    "@i1820/component": "^1.0.0",
-    "hapi": "^16.1.1",
+    "@i1820/component": "^1.1.0",
+    "hapi": "^16.5.0",
     "influx": "^5.0.7",
     "winston": "^2.3.1"
   },
   "devDependencies": {
     "eslint": "^3.19.0",
     "eslint-config-standard": "^10.2.1",
-    "eslint-plugin-import": "^2.6.0",
-    "eslint-plugin-node": "^5.1.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^5.1.1",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1"
   }
