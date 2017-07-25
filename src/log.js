@@ -22,18 +22,24 @@ class I1820Log {
     })
   }
 
-  log (agentId, thingId, type, timestamp, states) {
+  log (agentId, thingId, timestamp, states) {
     const points = []
     for (let name in states) {
       points.push({
         measurement: name,
-        tags: {agentId: agentId, deviceId: thingId, type: type},
+        tags: {agentId: agentId, deviceId: thingId},
         fields: {value: states[name]},
         time: timestamp
       })
     }
     this.influx.writePoints(points).then(() => {
     })
+  }
+
+  fetch (agentId, thingId, measurement, number) {
+    if (!number) {
+      number = 1
+    }
   }
 }
 
