@@ -16,7 +16,7 @@ class I1820Component extends EventEmitter {
   constructor (options) {
     super()
 
-    this.mqttClient = mqtt.connect(`mqtt://${options.host}:${options.port}`, {
+    this.mqttClient = mqtt.connect(`mqtt://${options.mqttHost}:${options.mqttPort}`, {
       clientId: `I1820/${options.name}/component/${crypto.randomBytes(34).toString('hex')}`
     })
 
