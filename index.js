@@ -39,14 +39,16 @@ const winston = require('winston')
 winston.cli()
 winston.info(' * 18.20 at Sep 07 2016 7:20 IR721')
 
-/* I1820 component initiation */
-const I1820Component = require('./src/component')
+/* I1820 Log Initiation */
 const I1820Log = require('./src/log')
 
 const i1820Log = new I1820Log({
   database: process.env.I1820_DATABASE_NAME,
   host: process.env.I1820_DATABASE_HOST
 })
+
+/* I1820 component initiation */
+const I1820Component = require('./src/component')
 
 new I1820Component({
   mqttHost: process.env.I1820_CONNECTIVITY_HOST,
@@ -58,4 +60,20 @@ new I1820Component({
 }).on('log', (message) => {
   winston.data(message)
   i1820Log.log(message.hash, message.id, message.type, message.timestamp, message.state)
+})
+
+/* HTTP server initiation */
+const Hapi = require('hapi')
+
+const server = new Hapi.Server()
+server.connection({
+  host: process.env.I1820_HTTP_HOST,
+  port: process.env.I1820_HTTP_PORT
+})
+
+server.start((err) => {
+  if (err) {
+    winston.error(err)
+  }
+  winston.info(`* HTTP at ${server.info.uri}`)
 })
