@@ -75,5 +75,5 @@ server.start((err) => {
   if (err) {
     winston.error(err)
   }
-  winston.info(`* HTTP at ${server.info.uri}`)
+  winston.info(` * HTTP at ${server.info.uri}`)
 })
