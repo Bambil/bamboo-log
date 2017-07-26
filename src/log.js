@@ -40,6 +40,11 @@ class I1820Log {
     if (!number) {
       number = 1
     }
+    this.influx.query(`SELECT * FROM ${measurement}
+                  WHERE "agentId" = '${agentId}' AND "thingId" = '${thingId}'
+                  ORDER BY time DESC LIMIT ${number};`).then((rows) => {
+                    console.log(rows)
+                  })
   }
 }
 
