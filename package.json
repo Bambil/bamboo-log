@@ -1,5 +1,5 @@
 {
-  "name": "@bamboo/log",
+  "name": "@ibamboo/log",
   "version": "3.0.0",
   "description": "Bambo log component",
   "main": "index.js",
