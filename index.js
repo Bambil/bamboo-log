@@ -59,16 +59,33 @@ new I1820Component({
   winston.info(` * MQTT at ${process.env.I1820_CONNECTIVITY_HOST}:${process.env.I1820_CONNECTIVITY_PORT}`)
 }).on('log', (message) => {
   winston.data(message)
-  i1820Log.log(message.name, message.data.id, message.data.timestamp, message.data.state)
+  i1820Log.log(`${message.tenant}/${message.name}`, message.data.id, message.data.timestamp, message.data.state)
 })
 
 /* HTTP server initiation */
 const Hapi = require('hapi')
 
 const server = new Hapi.Server()
+
 server.connection({
   host: process.env.I1820_HTTP_HOST,
   port: process.env.I1820_HTTP_PORT
+})
+
+server.route({
+  method: 'POST',
+  path: '/thing',
+  config: {
+    payload: {
+      parse: true
+    }
+  },
+  handler: function (request, reply) {
+    for (let s of request.payload['states']) {
+      i1820Log.fetch(request.payload['agent_id'], request.payload['thing_id'], s)
+    }
+    return reply('hello world')
+  }
 })
 
 server.start((err) => {
