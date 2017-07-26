@@ -17,5 +17,10 @@ Bamboo is an IoT platfrom that is product of three teams:
 2. Log Mediation
 3. Log Storing
 
+## Installation
+```sh
+sudo docker run --rm --name=influx -ti -p 8086:8086 influxdb
+```
+
 ## Standards
 * CBOR: RFC 7049 Concise Binary Object Representation
