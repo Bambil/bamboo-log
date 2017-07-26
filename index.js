@@ -48,7 +48,7 @@ const i1820Log = new I1820Log({
 })
 
 /* I1820 component initiation */
-const I1820Component = require('@i1820/component')
+const I1820Component = require('@ibamboo/component')
 
 new I1820Component({
   mqttHost: process.env.I1820_CONNECTIVITY_HOST,
