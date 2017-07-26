@@ -11,7 +11,7 @@
     "serve-pm2": "node ./node_modules/pm2/bin/pm2 start index.js"
   },
   "dependencies": {
-    "@i1820/component": "^1.1.0",
+    "@ibamboo/component": "^1.2.0",
     "hapi": "^16.5.0",
     "influx": "^5.0.7",
     "mqtt": "^2.9.3",
