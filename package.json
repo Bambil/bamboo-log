@@ -1,9 +1,9 @@
 {
-  "name": "@i1820/log",
+  "name": "@bamboo/log",
   "version": "3.0.0",
-  "description": "d2I1820 Log Component",
+  "description": "Bambo log component",
   "main": "index.js",
-  "repository": "https://gitlab.com/I1820/Log",
+  "repository": "https://gitlab.com/bambil/bamboo-log",
   "author": "Parham Alvani <parham.alvani@gmail.com>",
   "license": "GPL-3.0",
   "scripts": {
