@@ -1,6 +1,5 @@
 # Bamboo Log
 [![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](http://standardjs.com)
-![build-status](https://ci.bambo.ga/job/bambil/job/bamboo-connectivity/job/master/badge/icon)
 
 
 ## Introduction
