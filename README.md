@@ -3,7 +3,7 @@
 
 
 ## Introduction
-Bamboo is an IoT platfrom that is product of three teams:
+Bamboo is an IoT platfrom that is the product of three teams:
 
 * Nahal Corporation
 * Bambil Corporation
