@@ -10,7 +10,7 @@
 const Influx = require('influx')
 const winston = require('winston')
 
-class I1820Log {
+class BambooLog {
   constructor (options) {
     this.influx = new Influx.InfluxDB({
       host: options.host,
@@ -57,4 +57,4 @@ class I1820Log {
   }
 }
 
-module.exports = I1820Log
+module.exports = BambooLog
