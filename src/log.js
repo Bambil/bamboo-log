@@ -40,11 +40,20 @@ class I1820Log {
     if (!number) {
       number = 1
     }
-    this.influx.query(`SELECT * FROM ${measurement}
-                  WHERE "agentId" = '${agentId}' AND "thingId" = '${thingId}'
+    return new Promise((resolve, reject) => {
+      this.influx.query(`SELECT * FROM ${measurement}
+                  WHERE "agentId" = '${agentId}' AND "deviceId" = '${thingId}'
                   ORDER BY time DESC LIMIT ${number};`).then((rows) => {
-                    console.log(rows)
+                    let states = []
+                    for (let r of rows) {
+                      states.push({
+                        value: r.value,
+                        time: r.time
+                      })
+                    }
+                    resolve(states)
                   })
+    })
   }
 }
 
