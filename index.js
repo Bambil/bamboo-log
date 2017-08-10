@@ -8,29 +8,7 @@
  * +===============================================
  */
 /* Configuration */
-if (!process.env.BAMBOO_CONNECTIVITY_HOST) {
-  process.env.BAMBOO_CONNECTIVITY_HOST = '127.0.0.1'
-}
-
-if (!process.env.BAMBOO_CONNECTIVITY_PORT) {
-  process.env.BAMBOO_CONNECTIVITY_PORT = 1883
-}
-
-if (!process.env.BAMBOO_HTTP_HOST) {
-  process.env.BAMBOO_HTTP_HOST = '0.0.0.0'
-}
-
-if (!process.env.BAMBOO_HTTP_PORT) {
-  process.env.BAMBOO_HTTP_PORT = 8080
-}
-
-if (!process.env.BAMBOO_DATABASE_NAME) {
-  process.env.BAMBOO_DATABASE_NAME = 'Bamboo'
-}
-
-if (!process.env.BAMBOO_DATABASE_HOST) {
-  process.env.BAMBOO_DATABASE_HOST = '127.0.0.1'
-}
+const config = require('config')
 
 /* winston.js */
 const winston = require('winston')
@@ -43,20 +21,20 @@ winston.info(' * 18.20 at Sep 07 2016 7:20 IR721')
 const BambooLog = require('./src/log')
 
 const bambooLog = new BambooLog({
-  database: process.env.BAMBOO_DATABASE_NAME,
-  host: process.env.BAMBOO_DATABASE_HOST
+  database: config.database.name,
+  host: config.database.host
 })
 
 /* Bamboo component initiation */
 const BambooComponent = require('@ibamboo/component')
 
 new BambooComponent({
-  mqttHost: process.env.BAMBOO_CONNECTIVITY_HOST,
-  mqttPort: process.env.BAMBOO_CONNECTIVITY_PORT,
+  mqttHost: config.connectivity.host,
+  mqttPort: config.connectivity.port,
   name: 'log',
   subscribes: ['log']
 }).on('ready', () => {
-  winston.info(` * MQTT at ${process.env.BAMBOO_CONNECTIVITY_HOST}:${process.env.BAMBOO_CONNECTIVITY_PORT}`)
+  winston.info(` * MQTT at ${config.connectivity.host}:${config.connectivity.port}`)
 }).on('log', (message) => {
   winston.data(message)
   bambooLog.log(`${message.tenant}/${message.name}`, message.data.id, message.data.timestamp, message.data.state)
@@ -68,8 +46,8 @@ const Hapi = require('hapi')
 const server = new Hapi.Server()
 
 server.connection({
-  host: process.env.BAMBOO_HTTP_HOST,
-  port: process.env.BAMBOO_HTTP_PORT
+  host: config.http.host,
+  port: config.http.port
 })
 
 server.route({
