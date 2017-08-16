@@ -10,12 +10,23 @@
 /* Configuration */
 const config = require('config')
 
-/* winston.js */
-const winston = require('winston')
+/* Command Line Interface */
+const vorpal = require('vorpal')()
+const chalk = require('chalk')
 
-/* Configure CLI output on the default logger */
-winston.cli()
-winston.info(' * 18.20 at Sep 07 2016 7:20 IR721')
+vorpal
+  .command('fetch [state] [agent_id] [thing_id]', 'fetch last data from influx')
+  .action(function (args) {
+    return bambooLog.fetch(args['agent_id'], args['thing_id'], args['state']).then((states) => {
+      if (states.length > 0) {
+        this.log(`* value: ${chalk.rgb(123, 192, 67)(states[0].value)}`)
+        this.log(`* value: ${chalk.rgb(3, 146, 207)(states[0].time.toString())}`)
+      }
+    })
+  })
+
+vorpal.log(' * 18.20 at Sep 07 2016 7:20 IR721')
+vorpal.delimiter(`${chalk.green('Bamboo')} - ${chalk.rgb(255, 177, 79)('Connectivity')} > `).show()
 
 /* Bamboo Log Initiation */
 const BambooLog = require('./src/log')
@@ -34,9 +45,9 @@ new BambooComponent({
   name: 'log',
   subscribes: ['log']
 }).on('ready', () => {
-  winston.info(` * MQTT at ${config.connectivity.host}:${config.connectivity.port}`)
+  vorpal.log(` * MQTT at ${config.connectivity.host}:${config.connectivity.port}`)
 }).on('log', (message) => {
-  winston.data(message)
+  vorpal.log(message)
   bambooLog.log(`${message.tenant}/${message.name}`, message.data.id, message.data.timestamp, message.data.state)
 })
 
@@ -80,7 +91,7 @@ server.route({
 
 server.start((err) => {
   if (err) {
-    winston.error(err)
+    throw err
   }
-  winston.info(` * HTTP at ${server.info.uri}`)
+  vorpal.log(` * HTTP at ${server.info.uri}`)
 })
