@@ -8,7 +8,6 @@
  * +===============================================
  */
 const Influx = require('influx')
-const winston = require('winston')
 
 class BambooLog {
   constructor (options) {
@@ -18,7 +17,6 @@ class BambooLog {
     })
 
     this.influx.createDatabase(options.database).then(() => {
-      winston.log(' * influx db created.')
     })
   }
 
