@@ -1,10 +1,10 @@
 # Bamboo Log
-[![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](http://standardjs.com)  
-![bamboo](https://img.shields.io/badge/bambil-bamboo-orange.svg?style=flat-square)  
+[![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](http://standardjs.com)
 
+![bamboo](https://img.shields.io/badge/bambil-bamboo-orange.svg?style=flat-square)
 
 ## Introduction
-Bamboo is an IoT platfrom that is the product of three teams:
+Bamboo is an IoT platfrom which is the product of three teams:
 
 * Nahal Corporation
 * Bambil Corporation
@@ -12,13 +12,9 @@ Bamboo is an IoT platfrom that is the product of three teams:
 
 
 ## Log
-**Log** is every data that comes from the sensors, Log component provides following services:
+**Log** is an every data which comes from the sensors on specific periods.
 
-1. Log Collection
-2. Log Mediation
-3. Log Storing
-
-## Installation
+## Up and Running
 ```sh
 sudo docker run --rm --name=influx -ti -p 8086:8086 influxdb
 ```
