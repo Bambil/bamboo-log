@@ -26,7 +26,7 @@ vorpal
   })
 
 vorpal.log(' * 18.20 at Sep 07 2016 7:20 IR721')
-vorpal.delimiter(`${chalk.green('Bamboo')} - ${chalk.rgb(255, 177, 79)('Connectivity')} > `).show()
+vorpal.delimiter(`${chalk.green('Bamboo')} - ${chalk.rgb(255, 177, 79)('Log')} > `).show()
 
 /* Bamboo Log Initiation */
 const BambooLog = require('./src/log')
