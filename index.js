@@ -71,10 +71,15 @@ server.route({
   },
   handler: function (request, reply) {
     let r = []
+    let n = 1
+
+    if ('n' in request.query) {
+      n = request.query.n
+    }
 
     for (let s of request.payload['states']) {
       r.push(
-        bambooLog.fetch(request.payload['agent_id'], request.payload['thing_id'], s)
+        bambooLog.fetch(request.payload['agent_id'], request.payload['thing_id'], s, n)
       )
     }
     return reply(Promise.all(r).then((states) => {
@@ -84,7 +89,7 @@ server.route({
         res[request.payload['states'][i]] = states[i]
       }
 
-      return JSON.stringify(res)
+      return res
     }))
   }
 })
