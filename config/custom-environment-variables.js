@@ -1,5 +1,5 @@
 module.exports = {
-  datbase: {
+  database: {
     name: 'BAMBOO_DATABASE_NAME',
     host: 'BAMBOO_DATABASE_HOST'
   },
