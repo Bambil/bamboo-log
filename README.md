@@ -19,5 +19,13 @@ Bamboo is an IoT platfrom which is the product of three teams:
 sudo docker run --rm --name=influx -ti -p 8086:8086 influxdb
 ```
 
-## Standards
-* CBOR: RFC 7049 Concise Binary Object Representation
+## Configuration
+
+| Name     | Description |
+|:--------:|:------------|
+| BAMBOO_DATABASE_NAME | InfluxDB database name |
+| BAMBOO_DATABASE_HOST | InfluxDB host address |
+| BAMBOO_CONNECTIVITY_HOST | Bamboo connectivity host address |
+| BAMBOO_CONNECTIVITY_PORT | Bamboo connectivity port number |
+| BAMBOO_HTTP_HOST | HTTP server listening host |
+| BAMBOO_HTTP_PORT | HTTP server listening port |
