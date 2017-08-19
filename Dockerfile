@@ -1,20 +1,19 @@
-FROM banian/node
+FROM node:alpine
 
-# Copies dependencies in seperate layers to improve caching
-COPY package.json yarn.lock /usr/src/app/
+# Metadata
+LABEL maintainer="Parham Alvani <parham.alvani@gmail.com>"
 
-# Install dependencies
-RUN yarn install
-
-# Copy source
-COPY . /usr/src/app/
-
-# Let's go to /usr/src/app
+# Create app directory
+RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
-# Let's open required ports
-EXPOSE 8080
+# Install app dependencies
+COPY package.json /usr/src/app/
+RUN npm install
 
-# Creates configurations based on environment variables
-# and Command to execute.
-CMD ./config.sh && yarn serve
+# Bundle app source
+COPY . /usr/src/app
+
+# Entrypoint
+ENTRYPOINT ["node"]
+CMD ["index.js"]
