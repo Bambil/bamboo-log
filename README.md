@@ -13,7 +13,7 @@ Bamboo is an IoT platfrom which is the product of three teams:
 
 
 ## Log
-**Log** is an every data which comes from the sensors on specific periods.
+Log is any incoming data from sensors, Expected to be received periodically.
 
 ## Up and Running
 ```sh
