@@ -10,6 +10,20 @@
 /* Configuration */
 const config = require('config')
 
+/* winston.js */
+const winston = require('winston')
+
+winston.remove(winston.transports.Console)
+winston.add(winston.transports.File, {
+  filename: 'log.log',
+  timestamp: true,
+  prettyPrint: true,
+  json: false,
+  tailable: true,
+  maxFiles: 3
+})
+winston.add(winston.transports.Http, {})
+
 /* Command Line Interface */
 const vorpal = require('vorpal')()
 const chalk = require('chalk')
