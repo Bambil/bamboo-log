@@ -16,6 +16,7 @@ const winston = require('winston')
 winston.remove(winston.transports.Console)
 winston.add(winston.transports.File, {
   filename: 'log.log',
+  colorize: true,
   timestamp: true,
   prettyPrint: true,
   json: false,
@@ -27,6 +28,19 @@ winston.add(winston.transports.Http, {})
 /* Command Line Interface */
 const vorpal = require('vorpal')()
 const chalk = require('chalk')
+const { exec } = require('child_process')
+
+vorpal
+  .command('log', 'system generated logs')
+  .action(function (args, callback) {
+    exec('cat log.log', (error, stdout, stderr) => {
+      if (error) {
+        callback()
+      }
+      this.log(stdout)
+      callback()
+    })
+  })
 
 vorpal
   .command('fetch [state] [agent_id] [thing_id]', 'fetch last data from influx')
