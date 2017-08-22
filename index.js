@@ -15,13 +15,13 @@ const winston = require('winston')
 
 winston.remove(winston.transports.Console)
 winston.add(winston.transports.File, {
-  filename: 'log.log',
+  filename: 'bamboo-log.log',
   colorize: true,
   timestamp: true,
   prettyPrint: true,
   json: false,
   tailable: true,
-  maxFiles: 3
+  maxFiles: 1
 })
 winston.add(winston.transports.Http, {})
 
@@ -33,7 +33,7 @@ const { exec } = require('child_process')
 vorpal
   .command('log', 'system generated logs')
   .action(function (args, callback) {
-    exec('cat log.log', (error, stdout, stderr) => {
+    exec('cat bamboo-log.log', (error, stdout, stderr) => {
       if (error) {
         callback()
       }
