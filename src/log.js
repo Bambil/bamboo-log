@@ -8,7 +8,7 @@
  * +===============================================
  */
 const Influx = require('influx')
-const winston = require('winston')
+const logger = require('./logger')
 
 class BambooLog {
   constructor (options) {
@@ -19,7 +19,7 @@ class BambooLog {
 
     this.influx.createDatabase(options.database).then(() => {
     }).catch((err) => {
-      winston.log('error', err)
+      logger.log('error', err)
     })
   }
 
@@ -35,7 +35,7 @@ class BambooLog {
     }
     this.influx.writePoints(points).then(() => {
     }).catch((err) => {
-      winston.log('error', err)
+      logger.log('error', err)
     })
   }
 
