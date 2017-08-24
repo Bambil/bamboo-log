@@ -23,7 +23,10 @@ winston.add(winston.transports.File, {
   tailable: true,
   maxFiles: 1
 })
-winston.add(winston.transports.Http, {})
+winston.add(winston.transports.Http, {
+  host: config.winstond.host,
+  port: config.winstond.port
+})
 
 /* Command Line Interface */
 const vorpal = require('vorpal')()
