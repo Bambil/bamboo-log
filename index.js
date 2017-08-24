@@ -34,7 +34,7 @@ const chalk = require('chalk')
 const { exec } = require('child_process')
 
 vorpal
-  .command('log', 'system generated logs')
+  .command('logs', 'system generated logs')
   .action(function (args, callback) {
     exec('cat bamboo-log.log', (error, stdout, stderr) => {
       if (error) {
