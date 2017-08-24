@@ -10,5 +10,9 @@ module.exports = {
   http: {
     host: 'BAMBOO_HTTP_HOST',
     port: 'BAMBOO_HTTP_PORT'
+  },
+  winstond: {
+    host: 'BAMBOO_WINSTOND_HOST',
+    port: 'BAMBOO_WINSTOND_PORT'
   }
 }
