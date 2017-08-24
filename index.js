@@ -10,24 +10,6 @@
 /* Configuration */
 const config = require('config')
 
-/* winston.js */
-const winston = require('winston')
-
-winston.remove(winston.transports.Console)
-winston.add(winston.transports.File, {
-  filename: 'bamboo-log.log',
-  colorize: true,
-  timestamp: true,
-  prettyPrint: true,
-  json: false,
-  tailable: true,
-  maxFiles: 1
-})
-winston.add(winston.transports.Http, {
-  host: config.winstond.host,
-  port: config.winstond.port
-})
-
 /* Command Line Interface */
 const vorpal = require('vorpal')()
 const chalk = require('chalk')
