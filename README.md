@@ -3,6 +3,7 @@
 
 ![bamboo](https://img.shields.io/badge/bambil-bamboo-orange.svg?style=flat-square)
 ![Docker Automated build](https://img.shields.io/docker/automated/ibamboo/log.svg?style=flat-square)
+[![npm](https://img.shields.io/npm/v/@ibamboo/log.svg?style=flat-square)](https://www.npmjs.com/package/@ibamboo/log)
 
 ## Introduction
 Bamboo is an IoT platfrom which is the product of three teams:
