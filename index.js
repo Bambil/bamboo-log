@@ -44,10 +44,10 @@ vorpal.delimiter(`${chalk.green('Bamboo')} - ${chalk.rgb(255, 177, 79)('Log')} >
 /* Bamboo Log Initiation */
 const BambooLog = require('./src/log')
 
-const bambooLog = new BambooLog({
+const bambooLog = new BambooLog(require('./src/influx')({
   database: config.database.name,
   host: config.database.host
-})
+}))
 
 /* Bamboo component initiation */
 const BambooComponent = require('@ibamboo/component')
