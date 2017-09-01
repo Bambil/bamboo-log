@@ -36,7 +36,7 @@ module.exports = function (options) {
     },
     fetch: function (agentId, thingId, measurement, number) {
       return new Promise((resolve, reject) => {
-        this.influx.query(`SELECT * FROM ${measurement}
+        influx.query(`SELECT * FROM ${measurement}
                   WHERE "agentId" = '${agentId}' AND "deviceId" = '${thingId}'
                   ORDER BY time DESC LIMIT ${number};`)
           .then((rows) => {
