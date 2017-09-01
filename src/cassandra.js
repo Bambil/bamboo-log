@@ -12,25 +12,34 @@ const logger = require('./logger')
 
 module.exports = function (options) {
   const client = new cassandra.Client({
-    contactPoints: [options.host],
-    keyspace: options.database
+    contactPoints: [options.host]
   })
-  client.connect((err) => {
-    if (err) {
-      logger.log('error', err)
-    }
+  client.connect(() => {
+    client.execute(`CREATE KEYSPACE IF NOT EXISTS ${options.database} WITH replication = {'class': 'SimpleStrategy', 'replication_factor': '3' }`, (err) => {
+      if (err) {
+        logger.log('error', err)
+        return
+      }
+      client.execute(`USE ${options.database}`)
+    })
   })
 
   return {
     log: function (agentId, thingId, timestamp, states) {
+      let r = []
       for (let name in states) {
-        const query = `INSERT INTO ${name} (agnet_id, thing_id, timestamp, value) VALUES (?,?,?,?)`
-        client.execute(query, [agentId, thingId, timestamp, states[name]], {prepare: true}, (err) => {
-          if (err) {
-            logger.log('error', err)
-          }
-        })
+        client.execute(`CREATE TABLE IF NOT EXISTS ${name} (
+            agentId text,
+            deviceId text,
+            time timestamp,
+            value int,
+            PRIMARY KEY (agentId, deviceId)
+          )`).then(() => {
+            const query = `INSERT INTO ${name} (agentId, deviceId, time, value) VALUES (?,?,?,?)`
+            r.push(client.execute(query, [agentId, thingId, timestamp, states[name]], {prepare: true}))
+          })
       }
+      return Promise.all(r)
     },
     fetch: function (agentId, thingId, measurement, number) {
       return new Promise((resolve, reject) => {
@@ -39,7 +48,9 @@ module.exports = function (options) {
                   ORDER BY time DESC LIMIT ${number};`,
           (err, result) => {
             if (err) {
+              console.log(err)
               reject(err)
+              return
             }
             let rows = result.rows
             let states = []
