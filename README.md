@@ -4,7 +4,7 @@
 ![bamboo](https://img.shields.io/badge/bambil-bamboo-orange.svg?style=flat-square)
 ![Docker Automated build](https://img.shields.io/docker/automated/ibamboo/log.svg?style=flat-square)
 [![npm](https://img.shields.io/npm/v/@ibamboo/log.svg?style=flat-square)](https://www.npmjs.com/package/@ibamboo/log)
-[![](https://images.microbadger.com/badges/image/ibamboo/connectivity.svg)](https://microbadger.com/images/ibamboo/connectivity "Get your own image badge on microbadger.com")
+[![](https://images.microbadger.com/badges/image/ibamboo/log.svg)](https://microbadger.com/images/ibamboo/log "Get your own image badge on microbadger.com")
 
 ## Introduction
 Bamboo is an IoT platfrom which is the product of three teams:
