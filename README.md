@@ -17,6 +17,12 @@ Bamboo is an IoT platfrom which is the product of three teams:
 ## Log
 Log is any incoming data from sensors, Expected to be received periodically.
 
+```
++------+    +-----------+    +----+
+| Main | -> | BambooLog | -> | DB |
++------+    +-----------+    +----+
+```
+
 ## Up and Running
 This component depends on influx db as permanent storage for logs. you can
 use docker version of this database with following command:
