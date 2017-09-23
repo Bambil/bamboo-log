@@ -10,12 +10,12 @@
 const logger = require('./logger')
 
 class BambooLog {
-  constructor (strategy) {
-    this.strategy = strategy
+  constructor (db) {
+    this.db = db
   }
 
   log (agentId, thingId, timestamp, states) {
-    this.strategy.log(agentId, thingId, timestamp, states).then(() => {
+    this.db.log(agentId, thingId, timestamp, states).then(() => {
     }).catch((err) => {
       logger.log('error', err)
     })
@@ -25,7 +25,7 @@ class BambooLog {
     if (!number) {
       number = 1
     }
-    return this.strategy.fetch(agentId, thingId, measurement, number)
+    return this.db.fetch(agentId, thingId, measurement, number)
   }
 }
 
