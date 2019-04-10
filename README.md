@@ -1,20 +1,20 @@
 # Bamboo Log
+
 [![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](http://standardjs.com)
 
 ![bamboo](https://img.shields.io/badge/bambil-bamboo-orange.svg?style=flat-square)
-![Docker Automated build](https://img.shields.io/docker/automated/ibamboo/log.svg?style=flat-square)
-[![npm](https://img.shields.io/npm/v/@ibamboo/log.svg?style=flat-square)](https://www.npmjs.com/package/@ibamboo/log)
-[![](https://images.microbadger.com/badges/image/ibamboo/log.svg)](https://microbadger.com/images/ibamboo/log "Get your own image badge on microbadger.com")
+![npm](https://img.shields.io/npm/v/@ibamboo/log?style=flat-square)
 
 ## Introduction
+
 Bamboo is an IoT platfrom which is the product of three teams:
 
 * Nahal Corporation
 * Bambil Corporation
 * I1820 Platfrom Developers
 
-
 ## Log
+
 Log is any incoming data from sensors, Expected to be received periodically.
 
 ```
@@ -24,6 +24,7 @@ Log is any incoming data from sensors, Expected to be received periodically.
 ```
 
 ## Up and Running
+
 This component depends on influx db as permanent storage for logs. you can
 use docker version of this database with following command:
 
